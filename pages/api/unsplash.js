@@ -12,7 +12,9 @@ export default async (_, res) => {
   const result = await unsplash.photos.getRandom({
     count: 1,
     query: 'bull',
-  }).then(result => {
+  },
+  { headers: { 'Cache-Control': 'public, max-age=3600' } },
+  ).then(result => {
     if (result.type === 'success') {
       const photo = result.response[0];
       unsplash.photos.trackDownload({

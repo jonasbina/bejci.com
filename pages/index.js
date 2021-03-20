@@ -1,8 +1,12 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import Unsplash from '../components/Unsplash';
+import useSWR from 'swr';
+import fetcher from '../lib/fetcher';
 
 export default function Home() {
+  const { data } = useSWR('/api/unsplash', fetcher);
+
+
   return (
     <div className={styles.container}>
       <Head>
@@ -10,12 +14,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <img src={data?.url} className={styles.bgImage} alt=""></img>
+
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">BEJCI</a>
         </h1>
-
-        <Unsplash />
       </main>
 
       <footer className={styles.footer}>
