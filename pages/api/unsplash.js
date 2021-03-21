@@ -25,6 +25,7 @@ export default async (_, res) => {
   });
 
   const photo = result.response[0];
+  res.setHeader('Cache-Control', 'public, max-age=3600');
   return res.status(200).json({
        url: photo.urls.regular,
        username: photo.user.username,
