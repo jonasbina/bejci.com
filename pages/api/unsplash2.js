@@ -6,15 +6,11 @@ export default async (_, res) => {
         {
             headers: {
                 Authorization: auth,
-                'Cache-Control': 'public, max-age=3600'
             },
         }
     );
-    const responseJson = await resX.json()
-    console.log(responseJson[0])
+    const responseJson = await resX.json()    
 
     res.setHeader('Cache-Control', 'public, max-age=3600');
-    return res.status(200).json({
-        xoxo: responseJson[0].urls.full
-    })
+    return res.status(200).json(responseJson[0])
 };
