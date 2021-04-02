@@ -10,7 +10,7 @@ export default function Home() {
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
 
-  const attribution = "?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+  const attribution = "?utm_source=bejci.cz&utm_medium=referral&utm_content=creditCopyText"
   const photoUrlRegular = data.urls.regular
   const photoUrlFull = data.urls.full
   const photoHtmlUrl = data.links.html + attribution
@@ -21,6 +21,10 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Bejci</title>
+        <link rel="icon" href="/bejk.png" />
+      </Head>
       <div className={styles.bgWrap}>
       <Image
           alt={alt}
