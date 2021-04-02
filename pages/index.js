@@ -12,18 +12,27 @@ export default function Home() {
   if (!data) return <div>loading...</div>
 
   const attribution = "?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-  const photoUrl = data.urls.regular
+  const photoUrlRegular = data.urls.regular
+  const photoUrlFull = data.urls.full
   const photoHtmlUrl = data.links.html + attribution
   const authorUrl = data.user.links.html + attribution
   const authorName = data.user.username
   const unsplashUrl = "https://unsplash.com" + attribution
+  const alt = data.description
 
   return (
     <div className={styles.container}>
       <div className={styles.bgWrap}>
-        <Image
-          alt="Mountains"
-          src={photoUrl}
+      <Image
+          alt={alt}
+          src={photoUrlRegular}
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+        />
+      <Image
+          alt={alt}
+          src={photoUrlFull}
           layout="fill"
           objectFit="cover"
           quality={100}
