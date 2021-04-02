@@ -7,8 +7,24 @@ import Image from 'next/image'
 export default function Home() {
   const { data, error } = useSWR('/api/unsplash', fetcher)
 
-  if (error) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
+  if (error) return (
+    <div className={styles.container}>
+      <Head>
+        <title>Bejci</title>
+        <link rel="icon" href="/bejk.png" />
+      </Head>
+      <div className={styles.centered}>failed to load</div>
+    </div>
+  )
+  if (!data) return (
+    <div className={styles.container}>
+      <Head>
+        <title>Bejci</title>
+        <link rel="icon" href="/bejk.png" />
+      </Head>
+      <div className={styles.centered}>loading...</div>
+    </div>
+  )
 
   const attribution = "?utm_source=bejci.cz&utm_medium=referral&utm_content=creditCopyText"
   const photoUrlRegular = data.urls.regular
@@ -24,6 +40,7 @@ export default function Home() {
       <Head>
         <title>Bejci</title>
         <link rel="icon" href="/bejk.png" />
+        <meta name="theme-color" content={data.color} />
       </Head>
       <div className={styles.bgWrap}>
       <Image
