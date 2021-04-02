@@ -16,6 +16,6 @@ export default async (_, res) => {
     const responseJson = await resX.json()
     const results = responseJson.results
 
-    res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.setHeader('Cache-Control', 'public, max-age=120');
     return res.status(200).json(results[0])
 };
