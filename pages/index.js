@@ -3,10 +3,9 @@ import styles from '../styles/Home.module.css'
 import useSWR from 'swr';
 import fetcher from '../lib/fetcher';
 import Image from 'next/image'
-import { getCuratedPhotos } from "./api/unsplash2"
 
 export default function Home() {
-  const { data, error } = useSWR('/api/unsplash2', fetcher)
+  const { data, error } = useSWR('/api/unsplash', fetcher)
 
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
